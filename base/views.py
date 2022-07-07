@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.models import User
@@ -16,6 +17,10 @@ from .forms import RoomForm
    
     
 def loginPage(request):
+
+    if request.user.is_authenticated:
+        return redirect('home')
+        
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -74,6 +79,8 @@ def createRoom(request):
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
+    if request.user != room.host:
+        return HttpResponse('You are not allowed here!!')
     if request.method == 'POST':
         form = RoomForm(request.POST, instance=room)
         if form.is_valid():
