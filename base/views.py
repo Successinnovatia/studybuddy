@@ -75,8 +75,8 @@ def home (request):
 
     topics = Topic.objects.all()
     room_count = rooms.count()
-    room_messages = Message.objects.all()
-    
+    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))#show only topics that are clicked on on the browse topics in the activity feed and room homepage
+
     context = {'rooms': rooms, 'topics':topics, 'room_count':room_count, 'room_messages': room_messages}
     return render(request, 'base/home.html', context)
 
