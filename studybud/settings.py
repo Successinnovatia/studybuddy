@@ -149,3 +149,11 @@ MEDIA_ROOT = BASE_DIR/ 'static/images' #this is where the uploaded images will b
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+# Configure Django App for Heroku.
+import django_on_heroku
+django_on_heroku.settings(locals())
+
+
+import django_on_heroku
+TEST_RUNNER = 'django_on_heroku.HerokuDiscoverRunner'
