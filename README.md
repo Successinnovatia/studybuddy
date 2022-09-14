@@ -5,4 +5,4 @@ This is a chat app/ interactive discussions app for dicussing various study topi
 - Frontend: HTML, CSS, JavaScript
 - BACKEND/SERVER: Python, Django, Django Rest Framework, Heroku
 
-## live link: http://studybuddy-app-chat.herokuapp.com/
+ live link: http://studybuddy-app-chat.herokuapp.com/
